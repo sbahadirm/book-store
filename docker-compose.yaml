@@ -1,0 +1,33 @@
+version: '3'
+
+services:
+  app:
+    image: 'docker-spring-boot-postgres:latest'
+    build:
+      context: .
+    container_name: book-store
+    depends_on:
+      - postgresdb
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://postgresdb:5432/postgres
+      - SPRING_DATASOURCE_USERNAME=postgres
+      - SPRING_DATASOURCE_PASSWORD=1231231234
+      - SPRING_JPA_HIBERNATE_DDL_AUTO=update
+
+
+  postgresdb:
+    image: 'postgres:13.1-alpine'
+    container_name: postgresdb
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=1231231234
+#      - POSTGRES_DB=book_store
+#    command:
+#      - bash -c "-u postgres psql -c 'create database book_store;'"
+#      - bash -c "createdb -h localhost -p 5432 -U postgres book_store"
+    volumes:
+      - postgres-data:/data/db
+
+volumes:
+  postgres-data:
+    driver: local
