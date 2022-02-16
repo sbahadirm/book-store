@@ -50,8 +50,12 @@ Generic  | Gen
 https://github.com/sbahadirm/book-store.git
 ```
 
-
 2. Run Docker-Compose file 
+```powershell
+ > mvn clean install
+```
+
+3. Run Docker-Compose file 
 ```powershell
  > docker-compose up
 ```
