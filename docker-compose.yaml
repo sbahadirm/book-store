@@ -21,10 +21,7 @@ services:
     environment:
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=1231231234
-#      - POSTGRES_DB=book_store
-#    command:
-#      - bash -c "-u postgres psql -c 'create database book_store;'"
-#      - bash -c "createdb -h localhost -p 5432 -U postgres book_store"
+
     volumes:
       - postgres-data:/data/db
 
